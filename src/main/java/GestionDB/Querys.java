@@ -1,5 +1,7 @@
 package GestionDB;
 
-public class Querys {
+import Interfaces.ParametrosConexion;
+
+public class Querys implements ParametrosConexion{
 
 }

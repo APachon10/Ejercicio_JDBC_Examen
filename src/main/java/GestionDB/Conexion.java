@@ -1,5 +1,10 @@
 package GestionDB;
 
-public class Conexion {
+import Interfaces.ParametrosConexion;
 
+public class Conexion implements ParametrosConexion{
+	
+	public void Conexion() {
+		
+	}
 }
