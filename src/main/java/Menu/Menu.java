@@ -1,6 +1,10 @@
 package Menu;
 
+import java.sql.Connection;
 import java.util.Scanner;
+
+import GestionDB.Querys;
+import Modelos.Departamentos;
 
 public class Menu {
 	public void Menu() {
@@ -18,6 +22,11 @@ public class Menu {
 			
 			switch (opcion) {
 			case 1:
+				Scanner scan2 = new Scanner(System.in);
+				Departamentos d = new Departamentos();
+				System.out.print("Id del Departamento: ");
+				d.setDepartment_id(scan2.nextInt());			
+				d.setDepartment_name("DEVOPS");
 				break;
 			case 2:
 				break;
@@ -25,5 +34,10 @@ public class Menu {
 				break;
 			}
 		} while (opcion!=0);
+	}
+	public void insertarDepartmenDirectAccess(Departamentos d, Connection conn) {
+		Scanner scan2 = new Scanner(System.in);
+		Querys q = new Querys();
+		q.insertDepartaments(d, conn);
 	}
 }
