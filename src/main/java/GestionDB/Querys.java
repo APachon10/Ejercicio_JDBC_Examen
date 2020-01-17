@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import Interfaces.ParametrosConexion;
 import Modelos.Departamentos;
@@ -27,13 +28,13 @@ public class Querys implements ParametrosConexion{
 	}
 	public void insertEmployee(Empleados e,Connection conn,String department_name) {
 		try {
-			PreparedStatement ps = conn.prepareStatement("insert into empleados values(?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = conn.prepareStatement("insert into empleados values(?,?,?,?,?,?,?,?)");
 			
 			ps.setInt(1, e.getEmployee_id());
 			ps.setString(2, e.getEmployee_surname());
 			ps.setString(3, e.getEmployee_position());
 			ps.setInt(4, e.getDir());
-			ps.setDate(5, (java.sql.Date) e.getInitialDate());
+			ps.setDate(5,(Date) e.getInitialDate());
 			ps.setFloat(6, e.getSalary());
 			ps.setFloat(7, e.getCommission());
 			
@@ -41,7 +42,6 @@ public class Querys implements ParametrosConexion{
 			ResultSet rs = selectIdDepartamento(department_name, conn);
 			try {
 				if(rs.next()) {
-					System.out.println("Hola");
 					int id = ((Number) rs.getObject(1)).intValue();
 					e.setDepartment_number(id);
 					ps.setInt(8,e.getDepartment_number());
@@ -65,7 +65,7 @@ public class Querys implements ParametrosConexion{
 	public ResultSet selectIdDepartamento(String department_name,Connection conn) {
 		ResultSet rs = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement("select dept_no from departamentos where dnombre = "+ department_name);
+			PreparedStatement ps = conn.prepareStatement("select dept_no from departamentos where dnombre = "+ "'"+ department_name +"'");
 			rs = ps.executeQuery();
 		} catch (Exception e) {
 			System.out.println("Error! ");

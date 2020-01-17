@@ -1,6 +1,6 @@
 package Modelos;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Empleados {
 	private int employee_id;

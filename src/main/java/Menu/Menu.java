@@ -15,9 +15,10 @@ import Modelos.Departamentos;
 import Modelos.Empleados;
 
 public class Menu implements ParametrosConexion{
-	public void Menu(Connection conn) {
+	public void Menu(Connection conn) throws ParseException {
 		Scanner scan = new Scanner(System.in);
 		int opcion = 0;
+		Querys q = new Querys();
 		do {
 			System.out.print("Escoge una Opcion:");
 			System.out.println("========================");
@@ -43,20 +44,20 @@ public class Menu implements ParametrosConexion{
 				System.out.print("Localizacion del Departamento:");
 				d.setDepartment_location(scan2.next());
 				
+				q.insertDepartaments(d, conn);
 				break;
 			case 2:
-				Querys q = new Querys();
 				Scanner scan3 = new Scanner(System.in);
 				
 				Empleados e = new Empleados();
 				
 				e.setEmployee_id(7411);
-				e.setEmployee_surname("Joaquín López");
-				e.setEmployee_position("Programador");
+				e.setEmployee_surname("J López");
+				e.setEmployee_position("Program");
 				e.setDir(7450);
 				
 				String fecha = "1990-12-02";
-				Date fechaFinal = convertirFecha(fecha);
+				java.sql.Date fechaFinal = java.sql.Date.valueOf(fecha);
 				e.setInitialDate(fechaFinal);
 				
 				e.setSalary(1500);
@@ -77,17 +78,5 @@ public class Menu implements ParametrosConexion{
 		Scanner scan2 = new Scanner(System.in);
 		Querys q = new Querys();
 		q.insertDepartaments(d, conn);
-	}
-	public Date convertirFecha(String fecha ) {
-		Date fechaFinal = null;
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
-			fechaFinal =(Date) sdf.parse(fecha);
-		} catch (Exception e) {
-			System.out.println("Error : ");
-			System.out.println("==============");
-			e.printStackTrace();
-		}
-		return fechaFinal;
 	}
 }
