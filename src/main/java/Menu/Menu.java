@@ -70,13 +70,14 @@ public class Menu implements ParametrosConexion{
 				q.insertEmployee(e, conn, department_name);
 				break;
 			case 3:
+				Scanner scan24 = new Scanner(System.in);
+				int importe = 0;
+				System.out.print("Introduce el importe: ");
+				
+				importe = scan24.nextInt();
+				q.igualarComisionImporteIntroducido(importe, conn);
 				break;
 			}
 		} while (opcion!=0);
-	}
-	public void insertarDepartmenDirectAccess(Departamentos d, Connection conn) {
-		Scanner scan2 = new Scanner(System.in);
-		Querys q = new Querys();
-		q.insertDepartaments(d, conn);
 	}
 }

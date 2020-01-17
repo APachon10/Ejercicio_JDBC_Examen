@@ -61,7 +61,11 @@ public class Querys implements ParametrosConexion{
 			e1.printStackTrace();
 		}
 	}
-
+	public void igualarComisionImporteIntroducido(int importe_introducido , Connection conn) {
+		
+	}
+	
+	//Selects
 	public ResultSet selectIdDepartamento(String department_name,Connection conn) {
 		ResultSet rs = null;
 		try {
