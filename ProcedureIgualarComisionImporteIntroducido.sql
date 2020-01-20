@@ -1,9 +1,9 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `igualarComisionImpIntro`(IN `commi` INT, IN `oficio` VARCHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `igualarComisionImpIntro`(IN `commi` INT)
     NO SQL
 BEGIN
 	update empleados
     SET comision = commi
-    WHERE oficio = VENDEDOR;
+    WHERE oficio = "VENDEDOR";
 END$$
 DELIMITER ;
