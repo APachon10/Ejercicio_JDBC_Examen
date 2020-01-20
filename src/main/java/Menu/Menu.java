@@ -77,6 +77,13 @@ public class Menu implements ParametrosConexion{
 				
 				q.igualarComisionImporteIntroducido(importe, conn);
 				break;
+			case 4:
+				Scanner scan26 = new Scanner(System.in);
+				
+				System.out.print("Que Departamento quieres mirar?: ");
+				String department_name2  =scan26.next(); 
+				
+				q.listarEmpleadoxDepartamento(department_name2, conn);
 			}
 		} while (opcion!=0);
 	}

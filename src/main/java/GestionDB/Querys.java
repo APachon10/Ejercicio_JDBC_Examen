@@ -76,6 +76,19 @@ public class Querys implements ParametrosConexion{
 			e.printStackTrace();
 		}
 	}
+	public void listarEmpleadoxDepartamento(String department_name , Connection conn) {
+		System.out.println("Hola");
+		try {
+			//Llamamos al Procedimiento para insertar jugadores
+			CallableStatement cs = conn.prepareCall("{call   consultaEmpleadosDepartamento(?)}");
+			cs.setString(1, department_name);
+			cs.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("Error");
+			System.out.println("=================");
+			e.printStackTrace();
+		}
+	}
 	
 	//Selects
 	public ResultSet selectIdDepartamento(String department_name,Connection conn) {
