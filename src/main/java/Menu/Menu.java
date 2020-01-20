@@ -15,13 +15,13 @@ import Modelos.Departamentos;
 import Modelos.Empleados;
 
 public class Menu implements ParametrosConexion{
-	public void Menu(Connection conn) throws ParseException {
+	public void Menu(Connection conn) {
 		Scanner scan = new Scanner(System.in);
 		int opcion = 0;
 		Querys q = new Querys();
 		do {
-			System.out.print("Escoge una Opcion:");
-			System.out.println("========================");
+			System.out.println("Escoge una Opcion:");
+			System.out.println("\n========================");
 			System.out.println("1 - Insertar Departamento "
 					+ "\n2 - Insertar Empleado"
 					+ "\n3 - Igualar Comision Vendedores al importe introducido "
@@ -71,10 +71,10 @@ public class Menu implements ParametrosConexion{
 				break;
 			case 3:
 				Scanner scan24 = new Scanner(System.in);
-				int importe = 0;
-				System.out.print("Introduce el importe: ");
 				
-				importe = scan24.nextInt();
+				System.out.print("Introduce el importe: ");
+				float importe = scan24.nextFloat();
+				
 				q.igualarComisionImporteIntroducido(importe, conn);
 				break;
 			}

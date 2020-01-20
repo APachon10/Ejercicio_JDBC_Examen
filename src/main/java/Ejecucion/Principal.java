@@ -8,7 +8,7 @@ import Interfaces.ParametrosConexion;
 import Menu.Menu;
 
 public class Principal {
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args){
 		//Creamos la Conexion 
 		Conexion c = new Conexion();
 		Connection conn =null;

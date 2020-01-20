@@ -4,6 +4,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `igualarComisionImpIntro`(IN `commi`
 BEGIN
 	update empleados
     SET comision = commi
-    WHERE oficio = oficio;
+    WHERE oficio = VENDEDOR;
 END$$
 DELIMITER ;

@@ -1,5 +1,6 @@
 package GestionDB;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -61,8 +62,19 @@ public class Querys implements ParametrosConexion{
 			e1.printStackTrace();
 		}
 	}
-	public void igualarComisionImporteIntroducido(int importe_introducido , Connection conn) {
-		
+	public void igualarComisionImporteIntroducido(float importe_introducido , Connection conn) {
+		System.out.println("Hola");
+		try {
+			//Llamamos al Procedimiento para insertar jugadores
+			CallableStatement cs = conn.prepareCall("{call  igualarComisionImpIntro(?)}");
+			cs.setFloat(1, importe_introducido);
+			cs.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("Error");
+			System.out.println("=================");
+			e.printStackTrace();
+		}
 	}
 	
 	//Selects
